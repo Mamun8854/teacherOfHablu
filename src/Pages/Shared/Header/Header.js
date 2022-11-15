@@ -1,10 +1,11 @@
 import React from "react";
+import Image from "./navimg.png";
 
 const Header = () => {
   return (
     <div>
       <div className="navbar bg-base-100">
-        <div className="navbar-start">
+        <div className="navbar-start ">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
@@ -56,8 +57,13 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <a href="/" className="btn btn-ghost normal-case text-xl">
-            daisyUI
+          <a
+            href="/"
+            className="uppercase flex gap-2 items-center font-bold text-xl"
+          >
+            <img className="w-16" src={Image} alt="" />
+            <span className="text-teal-500 mr-2">Teacher </span> Of{" "}
+            <span className="text-teal-500 ml-2">Hablu</span>
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
