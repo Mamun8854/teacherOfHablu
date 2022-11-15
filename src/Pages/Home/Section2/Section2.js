@@ -13,6 +13,7 @@ const Section2 = () => {
   }, []);
   return (
     <div>
+      <h2>here is some books of hablu's teacher </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => (
           <Service key={service._id} service={service}></Service>
