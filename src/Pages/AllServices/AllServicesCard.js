@@ -1,9 +1,9 @@
 import React from "react";
-import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { FaArrowRight } from "react-icons/fa";
 
-const Service = ({ service }) => {
-  const { _id, price, name, about, picture } = service;
+const AllServicesCard = ({ service }) => {
+  const { _id, name, picture, about, price } = service;
   return (
     <div>
       <div className="max-w-xs p-6 rounded-md shadow-md dark:bg-gray-100 dark:text-gray-900">
@@ -31,4 +31,4 @@ const Service = ({ service }) => {
   );
 };
 
-export default Service;
+export default AllServicesCard;

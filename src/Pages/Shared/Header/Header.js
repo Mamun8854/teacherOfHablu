@@ -25,7 +25,7 @@ const Header = () => {
             <ul className="lg:flex items-center hidden space-x-8">
               <li>
                 <Link
-                  to="/allservice"
+                  to="/allservices"
                   aria-label="All Service"
                   title="All Service"
                   className="font-bold tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-400"
@@ -58,7 +58,7 @@ const Header = () => {
           <ul className=" items-center hidden space-x-8 lg:flex">
             <li>
               <Link
-                to="/"
+                to="/login"
                 aria-label="Sign in"
                 title="Sign in"
                 className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-400"
@@ -68,7 +68,7 @@ const Header = () => {
             </li>
             <li>
               <Link
-                to="/"
+                to="/signup"
                 className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-900 transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
                 aria-label="Sign up"
                 title="Sign up"
@@ -190,7 +190,7 @@ const Header = () => {
                       </li>
                       <li>
                         <Link
-                          to="/"
+                          to="/login"
                           aria-label="Sign in"
                           title="Sign in"
                           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
@@ -200,7 +200,7 @@ const Header = () => {
                       </li>
                       <li>
                         <Link
-                          to="/"
+                          to="/signup"
                           className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
                           aria-label="Sign up"
                           title="Sign up"

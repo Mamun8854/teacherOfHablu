@@ -20,7 +20,7 @@ const Section2 = () => {
         ))}
       </div>
       <div className="text-center mt-10">
-        <Link to="">
+        <Link to="/allservices">
           {" "}
           <button className="btn btn-outline">See All Services</button>
         </Link>
