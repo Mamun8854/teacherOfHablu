@@ -85,7 +85,7 @@ const Header = () => {
               <>
                 <li>
                   <Link
-                    to="/"
+                    to="/addService"
                     aria-label="Add Service"
                     title="Add Service"
                     className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-400"
