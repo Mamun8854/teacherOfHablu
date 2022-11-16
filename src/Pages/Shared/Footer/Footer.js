@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <div>
-      <footer className="px-4 py-8 dark:text-gray-400">
+      <footer className="px-4 py-8 dark:text-gray-600 font-semibold">
         <div className="container flex flex-wrap items-center justify-center mx-auto space-y-4 sm:justify-between sm:space-y-0">
           <div className="flex flex-row pr-3 space-x-4 sm:space-x-8">
             <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 rounded-full dark:bg-violet-400">
@@ -31,21 +32,21 @@ const Footer = () => {
           </div>
           <ul className="flex flex-wrap pl-3 space-x-4 sm:space-x-8">
             <li>
-              <a rel="noopener noreferrer" href="/">
-                Instagram
-              </a>
+              <a href="https://www.instagram.com/programminghero/">Instagram</a>
             </li>
             <li>
-              <a rel="noopener noreferrer" href="/">
-                Facebook
-              </a>
+              <a href="https://www.facebook.com/programmingHero">Facebook</a>
             </li>
             <li>
-              <a rel="noopener noreferrer" href="/">
-                Twitter
-              </a>
+              <a href="https://twitter.com/ProgrammingHero">Twitter</a>
             </li>
           </ul>
+        </div>
+        <div className="py-5">
+          <hr />
+          <p className="text-center pt-5">
+            © Copyright 2022 MamunMridha. All rights reserved.
+          </p>
         </div>
       </footer>
     </div>
