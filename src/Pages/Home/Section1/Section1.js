@@ -67,7 +67,7 @@ const Section1 = () => {
                   </p>
                 </div>
                 <div>
-                  <Link to="">
+                  <Link to="/allservices">
                     <button className="btn btn-outline z-10 text-white">
                       See All Services
                     </button>

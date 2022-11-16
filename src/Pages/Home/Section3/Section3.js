@@ -21,7 +21,7 @@ const Section3 = () => {
               performance and future learning"
             </p>
             <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
-              <Link to="">
+              <Link to="/allservices">
                 <button className="btn btn-outline">See All Services</button>
               </Link>
             </div>

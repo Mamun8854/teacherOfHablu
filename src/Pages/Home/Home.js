@@ -6,7 +6,7 @@ import Section4 from "./Section4/Section4";
 
 const Home = () => {
   return (
-    <div>
+    <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
       <Section1></Section1>
       <Section2></Section2>
       <Section3></Section3>
