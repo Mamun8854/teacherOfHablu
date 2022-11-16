@@ -18,6 +18,7 @@ const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
+  const [loading, setLoading] = useState(true);
 
   const signInWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
@@ -32,6 +33,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const emailPasswordSignUp = (email, password, name, photoURL) => {
+    setLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
         const user = result.user;
@@ -78,6 +80,7 @@ const AuthProvider = ({ children }) => {
 
   const authInfo = {
     user,
+    loading,
     signInWithGoogle,
     emailPasswordSignUp,
     emailPasswordSignIn,
