@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import Image from "./navimg.png";
 
 const Header = () => {
+  const { user, signOutUser } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -56,26 +58,64 @@ const Header = () => {
             </ul>
           </div>
           <ul className=" items-center hidden space-x-8 lg:flex">
-            <li>
-              <Link
-                to="/login"
-                aria-label="Sign in"
-                title="Sign in"
-                className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-400"
-              >
-                Sign in
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/signup"
-                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-900 transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
-                aria-label="Sign up"
-                title="Sign up"
-              >
-                Sign up
-              </Link>
-            </li>
+            {!user ? (
+              <>
+                <li>
+                  <Link
+                    to="/login"
+                    aria-label="Sign in"
+                    title="Sign in"
+                    className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-400"
+                  >
+                    Sign in
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/signup"
+                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-900 transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                    aria-label="Sign up"
+                    title="Sign up"
+                  >
+                    Sign up
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link
+                    to="/"
+                    aria-label="Add Service"
+                    title="Add Service"
+                    className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-400"
+                  >
+                    Add Service
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/"
+                    aria-label="My Review"
+                    title="My Review"
+                    className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-400"
+                  >
+                    My Review
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    onClick={() => signOutUser()}
+                    to="/signup"
+                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-900 transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                    aria-label="Sign up"
+                    title="Sign up"
+                  >
+                    Sign Out
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
           <div className="lg:hidden">
             <button

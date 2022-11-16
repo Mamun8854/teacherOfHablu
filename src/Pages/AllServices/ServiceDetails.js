@@ -26,7 +26,9 @@ const ServiceDetails = () => {
             <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
               {name}
             </h1>
-            <p className="mb-8 leading-relaxed">{about}</p>
+            <p className="mb-8 leading-relaxed bg-white p-10 rounded-lg">
+              {about}
+            </p>
             <p className="font-bold text-teal-600 py-4">$ {price}</p>
             <div className="flex justify-center">
               <Link to="/allservices">

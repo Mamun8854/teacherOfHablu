@@ -1,25 +1,30 @@
-import React, { createContext } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import app from "../Firebase/Firebase.init";
 import {
   createUserWithEmailAndPassword,
   getAuth,
   GoogleAuthProvider,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
   updateProfile,
 } from "firebase/auth";
+import toast from "react-hot-toast";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState();
+
   const signInWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
         console.log(user);
-        alert("login successful");
+        toast.success("Sign In Successfully With Gmail");
       })
       .catch((error) => {
         console.error(error.message);
@@ -37,6 +42,7 @@ const AuthProvider = ({ children }) => {
           photoURL: photoURL,
         }).then(() => {});
         console.log(user);
+        toast.success("Successfully Sign Up");
       })
       .catch((error) => {
         console.error(error.message);
@@ -48,16 +54,34 @@ const AuthProvider = ({ children }) => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        toast.success("Sign In Successfully");
       })
       .catch((error) => {
         console.error(error.message);
       });
   };
 
+  const signOutUser = () => {
+    signOut(auth)
+      .then()
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unSubscribe();
+  }, []);
+
   const authInfo = {
+    user,
     signInWithGoogle,
     emailPasswordSignUp,
     emailPasswordSignIn,
+    signOutUser,
   };
 
   return (
