@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Register = () => {
+  const { emailPasswordSignUp } = useContext(AuthContext);
+  const handleFrom = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    emailPasswordSignUp(email, password, name, photoURL);
+  };
   return (
     <div>
       <div className="flex justify-center bg-white py-20">
@@ -9,7 +20,10 @@ const Register = () => {
           <h1 className="text-2xl font-bold text-center text-black">
             Registration
           </h1>
-          <form className="space-y-6 ng-untouched ng-pristine ng-valid">
+          <form
+            onSubmit={handleFrom}
+            className="space-y-6 ng-untouched ng-pristine ng-valid"
+          >
             <div className="space-y-1 text-sm">
               <label
                 htmlFor="name"

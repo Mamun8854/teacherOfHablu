@@ -3,13 +3,24 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Login = () => {
-  const { signInWithGoogle } = useContext(AuthContext);
+  const { signInWithGoogle, emailPasswordSignIn } = useContext(AuthContext);
+  const handleFrom = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    emailPasswordSignIn(email, password);
+  };
+
   return (
     <div>
       <div className="flex justify-center py-20 bg-white ">
         <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-100 text-gray-900 shadow-xl shadow-slate-400 hover:shadow-slate-900">
           <h1 className="text-2xl font-bold text-center">Login</h1>
-          <form className="space-y-6 ng-untouched ng-pristine ng-valid">
+          <form
+            onSubmit={handleFrom}
+            className="space-y-6 ng-untouched ng-pristine ng-valid"
+          >
             <div className="space-y-1 text-sm">
               <label
                 htmlFor="email"
