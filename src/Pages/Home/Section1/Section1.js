@@ -56,14 +56,15 @@ const Section1 = () => {
                           height="24"
                         />
                       </svg>
-                      <span className="relative">The</span>
+                      <span className="relative">Complete </span>
                     </span>{" "}
-                    quick, brown fox jumps over a lazy dog
+                    guideline from absolute beginners to getting hired.
                   </h2>
-                  <p className="text-base text-indigo-100 md:text-lg">
-                    Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem accusantium doloremque rem aperiam, eaque ipsa
-                    quae.
+                  <p className="text-base text-gray-100 md:text-lg">
+                    Personalized, fun, and interactive learning process. Enjoy
+                    our gamified courses to master python, mobile app
+                    development, cyber security, C programming, C++, and many
+                    more.
                   </p>
                 </div>
                 <div>

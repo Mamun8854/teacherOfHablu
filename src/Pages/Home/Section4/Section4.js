@@ -34,11 +34,11 @@ const Section4 = () => {
               </svg>
               <div className="space-y-2">
                 <p className="text-lg font-medium leading-snug">
-                  Lorem ipsum dolor sit amet
+                  Candidate Guides
                 </p>
                 <p className="leading-snug">
-                  Praesentium ea et neque distinctio quas eius repudiandae
-                  quaerat obcaecati voluptatem similique!
+                  We shortlist and pre-assess resumes and candidates based on
+                  your unique needs.
                 </p>
               </div>
             </div>
@@ -60,11 +60,11 @@ const Section4 = () => {
 
               <div className="space-y-2">
                 <p className="text-lg font-medium leading-snug">
-                  Lorem ipsum dolor sit amet
+                  Futuristic Developer
                 </p>
                 <p className="leading-snug">
-                  Praesentium ea et neque distinctio quas eius repudiandae
-                  quaerat obcaecati voluptatem similique!
+                  Hire energetic Developers who are challenge takers and a quick
+                  learner.
                 </p>
               </div>
             </div>
@@ -85,11 +85,11 @@ const Section4 = () => {
               </svg>
               <div className="space-y-2">
                 <p className="text-lg font-medium leading-snug">
-                  Lorem ipsum dolor sit amet
+                  Productive team
                 </p>
                 <p className="leading-snug">
-                  Praesentium ea et neque distinctio quas eius repudiandae
-                  quaerat obcaecati voluptatem similique!
+                  Build high performing teams crafted just for you with the
+                  right fit for your specific requirements.
                 </p>
               </div>
             </div>
