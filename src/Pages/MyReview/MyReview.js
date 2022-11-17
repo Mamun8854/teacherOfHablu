@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import useTitle from "../../Hook/useTitle";
 import MyReviewCard from "./MyReviewCard";
 import NoReviewError from "./NoReviewError";
 const MyReview = () => {
@@ -8,6 +9,7 @@ const MyReview = () => {
   const [dlt, setDlt] = useState(true);
   const [reviews, setReviews] = useState();
   const [dd, setDd] = useState();
+  useTitle("My Review");
   useEffect(() => {
     if (user?.email) {
       fetch(

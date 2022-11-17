@@ -1,6 +1,8 @@
 import React from "react";
+import useTitle from "../../Hook/useTitle";
 
 const Review = ({ d }) => {
+  useTitle("Review");
   return (
     <div>
       <div className=" bg-gray-100 flex items-center justify-center">

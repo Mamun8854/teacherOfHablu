@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import useTitle from "../../Hook/useTitle";
 import AllServicesCard from "./AllServicesCard";
 
 const AllServices = () => {
   const { loading } = useContext(AuthContext);
   const [services, setServices] = useState([]);
+  useTitle("All Service");
 
   useEffect(() => {
     fetch("https://assignment-11-server-rosy.vercel.app/services")

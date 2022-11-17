@@ -1,8 +1,10 @@
 import React from "react";
 import toast from "react-hot-toast";
+import useTitle from "../../Hook/useTitle";
 
 const AddService = () => {
   const date = Date.now();
+  useTitle("Add Service");
   const handleForm = (event) => {
     event.preventDefault();
     const form = event.target;

@@ -1,8 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import useTitle from "../../../Hook/useTitle";
 
 const Login = () => {
+  useTitle("Log In");
   const { user, signInWithGoogle, emailPasswordSignIn, loading } =
     useContext(AuthContext);
 
