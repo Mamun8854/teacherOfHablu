@@ -37,8 +37,6 @@ const AuthProvider = ({ children }) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
         const user = result.user;
-
-        alert("User Create Successfully");
         updateProfile(auth.currentUser, {
           displayName: name,
           photoURL: photoURL,

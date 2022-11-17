@@ -1,9 +1,15 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Login = () => {
-  const { signInWithGoogle, emailPasswordSignIn } = useContext(AuthContext);
+  const { user, signInWithGoogle, emailPasswordSignIn } =
+    useContext(AuthContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const handleFrom = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -11,6 +17,12 @@ const Login = () => {
     const password = form.password.value;
     emailPasswordSignIn(email, password);
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [user, from, navigate]);
 
   return (
     <div>

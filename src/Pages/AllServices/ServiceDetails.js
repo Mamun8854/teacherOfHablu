@@ -93,7 +93,7 @@ const ServiceDetails = () => {
         <h2 className="font-extrabold text-center text-xl py-20">
           Review for this service
         </h2>
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
           {data?.map((d) => (
             <Review key={d._id} d={d}></Review>
           ))}

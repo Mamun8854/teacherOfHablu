@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const { emailPasswordSignUp } = useContext(AuthContext);
   const handleFrom = (event) => {
     event.preventDefault();
@@ -12,6 +14,7 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     emailPasswordSignUp(email, password, name, photoURL);
+    navigate("/");
   };
   return (
     <div>
