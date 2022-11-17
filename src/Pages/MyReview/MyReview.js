@@ -10,7 +10,11 @@ const MyReview = () => {
   const [dd, setDd] = useState();
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/review?email=${user?.email}`)
+      fetch(`http://localhost:5000/review?email=${user?.email}`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
         .then((res) => res.json())
         .then((data) => {
           setReviews(data);
@@ -27,11 +31,9 @@ const MyReview = () => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          if (data?.deletedCount > 0) {
-            toast.success("delete successfully");
-            setLoading(false);
-            setDlt(!dlt);
-          }
+          setLoading(false);
+          setDlt(!dlt);
+          toast.success("delete successfully");
         });
     }
   };

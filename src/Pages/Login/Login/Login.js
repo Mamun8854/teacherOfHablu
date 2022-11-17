@@ -3,13 +3,18 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Login = () => {
-  const { user, signInWithGoogle, emailPasswordSignIn } =
+  const { user, signInWithGoogle, emailPasswordSignIn, loading } =
     useContext(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
+  if (loading) {
+    return (
+      <h2 className="text-5xl font-bold text-center pt-0.5">Loading...</h2>
+    );
+  }
   const handleFrom = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -18,11 +23,9 @@ const Login = () => {
     emailPasswordSignIn(email, password);
   };
 
-  useEffect(() => {
-    if (user) {
-      navigate(from, { replace: true });
-    }
-  }, [user, from, navigate]);
+  if (user) {
+    navigate(from, { replace: true });
+  }
 
   return (
     <div>

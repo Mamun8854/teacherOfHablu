@@ -24,8 +24,18 @@ const AuthProvider = ({ children }) => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
-        console.log(user);
-        toast.success("Sign In Successfully With Gmail");
+        fetch("http://localhost:5000/jwt", {
+          method: "post",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("token", data?.token);
+            toast.success("Sign In Successfully With Gmail");
+          });
       })
       .catch((error) => {
         console.error(error.message);
@@ -37,12 +47,25 @@ const AuthProvider = ({ children }) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
         const user = result.user;
+
         updateProfile(auth.currentUser, {
           displayName: name,
           photoURL: photoURL,
         }).then(() => {});
         console.log(user);
-        toast.success("Successfully Sign Up");
+
+        fetch("http://localhost:5000/jwt", {
+          method: "post",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("token", data?.token);
+            toast.success("Successfully Sign Up");
+          });
       })
       .catch((error) => {
         console.error(error.message);
@@ -53,8 +76,19 @@ const AuthProvider = ({ children }) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
-        toast.success("Sign In Successfully");
+        fetch("http://localhost:5000/jwt", {
+          method: "post",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("token", data?.token);
+            console.log(user);
+            toast.success("Sign In Successfully");
+          });
       })
       .catch((error) => {
         console.error(error.message);

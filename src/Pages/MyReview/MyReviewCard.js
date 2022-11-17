@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 
 const MyReviewCard = ({ review, handleDeleteReview, setDd }) => {
-  const [edit, setEdit] = useState(false);
+  const [edit, setEdit] = useState();
   //   const [updateReview, setUpdateReview] = useState();
 
   const editReview = (event) => {
@@ -26,7 +26,7 @@ const MyReviewCard = ({ review, handleDeleteReview, setDd }) => {
         });
     }
   };
-  console.log(review);
+  console.log(edit);
 
   return (
     <div>
@@ -47,7 +47,11 @@ const MyReviewCard = ({ review, handleDeleteReview, setDd }) => {
               disabled={!edit}
               name="review"
               defaultValue={review?.review}
-              className="p-4 rounded-md resize-none dark:text-gray-900 dark:bg-white"
+              className={
+                edit
+                  ? "p-4 rounded-md resize-none dark:text-gray-900 dark:bg-white border-2 border-black"
+                  : "p-4 rounded-md resize-none dark:text-gray-900 dark:bg-white"
+              }
             ></textarea>
           </div>
           <div className="flex items-center justify-center gap-10 py-5">
@@ -56,27 +60,29 @@ const MyReviewCard = ({ review, handleDeleteReview, setDd }) => {
                 <button
                   onClick={() => setEdit(false)}
                   type="submit"
-                  className="btn btn-outline"
+                  className="btn btn-outline w-[200px]"
                 >
                   Update
                 </button>
               ) : (
                 <button
                   onClick={() => setEdit(true)}
-                  className="btn btn-outline"
+                  className="btn btn-outline w-[200px]"
                 >
                   Edit
                 </button>
               )}
             </div>
-            <button
-              onClick={() => handleDeleteReview(review?._id)}
-              className="btn btn-outline text-red-700 font-bold hover:bg-red-600"
-            >
-              Delete
-            </button>
           </div>
         </form>
+        <div className="mx-auto">
+          <button
+            onClick={() => handleDeleteReview(review?._id)}
+            className="btn btn-outline text-red-700 font-bold hover:bg-red-600 w-[200px]"
+          >
+            Delete
+          </button>
+        </div>
       </div>
     </div>
   );

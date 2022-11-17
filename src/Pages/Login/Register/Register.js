@@ -5,7 +5,8 @@ import { AuthContext } from "../../../AuthProvider/AuthProvider";
 const Register = () => {
   const navigate = useNavigate();
 
-  const { emailPasswordSignUp } = useContext(AuthContext);
+  const { emailPasswordSignUp, loading } = useContext(AuthContext);
+
   const handleFrom = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -16,6 +17,13 @@ const Register = () => {
     emailPasswordSignUp(email, password, name, photoURL);
     navigate("/");
   };
+
+  if (loading) {
+    return (
+      <h2 className="text-5xl font-bold text-center pt-0.5">Loading...</h2>
+    );
+  }
+
   return (
     <div>
       <div className="flex justify-center bg-white py-20">

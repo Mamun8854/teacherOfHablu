@@ -3,7 +3,7 @@ import React from "react";
 const Section5 = () => {
   return (
     <div>
-      <div className="flex min-h-screen items-center justify-start bg-white">
+      <div className="flex items-center justify-start bg-white">
         <div className="mx-auto w-full max-w-lg">
           <h1 className="text-4xl font-bold text-center">Contact us</h1>
           <p className="mt-3 text-center">
