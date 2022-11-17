@@ -106,12 +106,12 @@ const ServiceDetails = () => {
         <div className="text-center">
           <form onSubmit={handleReview}>
             <div className="flex justify-center">
-              <label>
+              <label className="p-10">
                 <textarea
                   className="rounded-lg p-4 text-gray-600 font-semibold"
                   name="text"
                   id=""
-                  cols="100"
+                  cols="lg:100"
                   rows="5"
                 ></textarea>
               </label>

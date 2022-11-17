@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <div className="px-4 py-5 bg-white mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
       <div>
-        <div className="relative flex items-center justify-between">
+        <div className="relative flex items-center justify-between z-50">
           <div className="flex items-center">
             <Link
               to="/"
@@ -43,16 +43,6 @@ const Header = () => {
                   className="font-bold tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-400"
                 >
                   Blog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/"
-                  aria-label="About us"
-                  title="About us"
-                  className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-400"
-                >
-                  About us
                 </Link>
               </li>
             </ul>
@@ -150,23 +140,10 @@ const Header = () => {
                         title="Teacher Of Hablu"
                         className="inline-flex items-center"
                       >
-                        <svg
-                          className="w-8 text-purple-400"
-                          viewBox="0 0 24 24"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeMiterlimit="10"
-                          stroke="currentColor"
-                          fill="none"
-                        >
-                          <rect x="3" y="1" width="7" height="12" />
-                          <rect x="3" y="17" width="7" height="6" />
-                          <rect x="14" y="1" width="7" height="6" />
-                          <rect x="14" y="11" width="7" height="12" />
-                        </svg>
+                        <img className="w-16" src={Image} alt="" />
                         <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                          Company
+                          <span className="text-teal-500">Teacher</span> Of{" "}
+                          <span className="text-teal-500">Hablu</span>
                         </span>
                       </Link>
                     </div>
@@ -190,64 +167,82 @@ const Header = () => {
                     <ul className="space-y-4">
                       <li>
                         <Link
-                          to="/"
-                          aria-label="Our product"
-                          title="Our product"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
+                          to="/allservices"
+                          aria-label="All Service"
+                          title="All Service"
+                          className="font-bold tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-400"
                         >
-                          Product
+                          All Service
                         </Link>
                       </li>
                       <li>
                         <Link
-                          to="/"
-                          aria-label="Our product"
-                          title="Our product"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
+                          to="/blog"
+                          aria-label="Blog"
+                          title="Blog"
+                          className="font-bold tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-400"
                         >
-                          Features
+                          Blog
                         </Link>
                       </li>
-                      <li>
-                        <Link
-                          to="/"
-                          aria-label="Product pricing"
-                          title="Product pricing"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
-                        >
-                          Pricing
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="/"
-                          aria-label="About us"
-                          title="About us"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
-                        >
-                          About us
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="/login"
-                          aria-label="Sign in"
-                          title="Sign in"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-purple-400"
-                        >
-                          Sign in
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          to="/signup"
-                          className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
-                          aria-label="Sign up"
-                          title="Sign up"
-                        >
-                          Sign up
-                        </Link>
-                      </li>
+                      {!user ? (
+                        <>
+                          <li>
+                            <Link
+                              to="/login"
+                              aria-label="Sign in"
+                              title="Sign in"
+                              className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-400"
+                            >
+                              Sign in
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="/signup"
+                              className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-900 transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                              aria-label="Sign up"
+                              title="Sign up"
+                            >
+                              Sign up
+                            </Link>
+                          </li>
+                        </>
+                      ) : (
+                        <>
+                          <li>
+                            <Link
+                              to="/addService"
+                              aria-label="Add Service"
+                              title="Add Service"
+                              className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-400"
+                            >
+                              Add Service
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to="/myReview"
+                              aria-label="My Review"
+                              title="My Review"
+                              className="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-teal-400"
+                            >
+                              My Review
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              onClick={() => signOutUser()}
+                              to="/signup"
+                              className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-900 transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                              aria-label="Sign up"
+                              title="Sign up"
+                            >
+                              Sign Out
+                            </Link>
+                          </li>
+                        </>
+                      )}
                     </ul>
                   </nav>
                 </div>
