@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const NoReviewError = () => {
   return (
-    <div>
+    <div className="">
       <section className="flex items-center h-full p-16 dark:bg-gray-100 dark:text-gray-900 py-20">
         <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8 bg-white p-10 rounded-lg ">
           <div className="max-w-md text-center">

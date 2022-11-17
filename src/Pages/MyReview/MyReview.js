@@ -37,20 +37,22 @@ const MyReview = () => {
   };
 
   return (
-    <div className="grid  grid-cols-1 lg:grid-cols-2 gap-10">
+    <div>
       {reviews?.length > 0 ? (
-        reviews?.map((review) => (
-          <MyReviewCard
-            key={review._id}
-            review={review}
-            handleDeleteReview={handleDeleteReview}
-            setDd={setDd}
-          ></MyReviewCard>
-        ))
+        <div className="grid  grid-cols-1 lg:grid-cols-2 gap-10">
+          {reviews?.map((review) => (
+            <MyReviewCard
+              key={review._id}
+              review={review}
+              handleDeleteReview={handleDeleteReview}
+              setDd={setDd}
+            ></MyReviewCard>
+          ))}
+        </div>
       ) : (
-        <>
+        <div>
           <NoReviewError></NoReviewError>
-        </>
+        </div>
       )}
     </div>
   );

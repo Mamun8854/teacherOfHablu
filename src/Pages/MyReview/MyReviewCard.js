@@ -71,7 +71,7 @@ const MyReviewCard = ({ review, handleDeleteReview, setDd }) => {
             </div>
             <button
               onClick={() => handleDeleteReview(review?._id)}
-              className="btn btn-outline text-red-700 font-bold"
+              className="btn btn-outline text-red-700 font-bold hover:bg-red-600"
             >
               Delete
             </button>
