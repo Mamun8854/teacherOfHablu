@@ -1,5 +1,3 @@
-## My site name is Edgar Allan
-
 ## Website live link is https://assignment-11-625c9.web.app/
 
 # You can see in this website
