@@ -3,9 +3,6 @@ import toast from "react-hot-toast";
 
 const AddService = () => {
   const date = Date.now();
-
-  // Add Services
-
   const handleForm = (event) => {
     event.preventDefault();
     const form = event.target;

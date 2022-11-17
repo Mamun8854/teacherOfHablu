@@ -1,12 +1,59 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import "react-photo-view/dist/react-photo-view.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import toast from "react-hot-toast";
+import Review from "./Review";
 
 const ServiceDetails = () => {
+  const { user } = useContext(AuthContext);
+  const displayName = user?.displayName;
+  const email = user?.email;
+  const photoURL = user?.photoURL;
+  const [data, setData] = useState();
   const service = useLoaderData();
+  const { price, name, about, picture, _id } = service;
 
-  const { price, name, about, picture } = service;
+  const date = Date.now();
+  useEffect(() => {
+    fetch(`http://localhost:5000/review/${_id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+      });
+  }, [data]);
+
+  const handleReview = (event) => {
+    event.preventDefault();
+    const reviewValue = event.target.text.value;
+    const data = {
+      userName: displayName,
+      userEmail: email,
+      userPhoto: photoURL,
+      review: reviewValue,
+      postId: _id,
+      name,
+      date: date,
+    };
+    if (user) {
+      fetch("http://localhost:5000/review", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          toast.success("Review added");
+        })
+        .catch((error) => console.error(error.message));
+    } else {
+      toast.error("Please Login First, then add your review bokachoda");
+    }
+  };
+
   return (
     <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 bg-gray-100">
       <section className="text-gray-600 body-font ">
@@ -41,24 +88,33 @@ const ServiceDetails = () => {
         </div>
       </section>
       <section>
+        <div className="grid grid-cols-3">
+          {data?.map((d) => (
+            <Review key={d._id} d={d}></Review>
+          ))}
+        </div>
+      </section>
+      <section>
         <h3 className="font-bold text-center text-4xl py-10">
           Drop Your Review
         </h3>
         <div className="text-center">
-          <div className="flex justify-center">
-            <label>
-              <textarea
-                className="rounded-lg p-4 text-gray-600 font-semibold"
-                name=""
-                id=""
-                cols="100"
-                rows="10"
-              ></textarea>
-            </label>
-          </div>
-          <button type="submit" className="btn btn-outline my-4 font-bold">
-            Submit
-          </button>
+          <form onSubmit={handleReview}>
+            <div className="flex justify-center">
+              <label>
+                <textarea
+                  className="rounded-lg p-4 text-gray-600 font-semibold"
+                  name="text"
+                  id=""
+                  cols="100"
+                  rows="5"
+                ></textarea>
+              </label>
+            </div>
+            <button type="submit" className="btn btn-outline my-4 font-bold">
+              Submit
+            </button>
+          </form>
         </div>
       </section>
     </div>
