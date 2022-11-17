@@ -17,7 +17,7 @@ const ServiceDetails = () => {
 
   const date = Date.now();
   useEffect(() => {
-    fetch(`http://localhost:5000/review/${_id}`)
+    fetch(`https://assignment-11-server-rosy.vercel.app/review/${_id}`)
       .then((res) => res.json())
       .then((data) => {
         setData(data);
@@ -38,7 +38,7 @@ const ServiceDetails = () => {
       date: date,
     };
     if (user) {
-      fetch("http://localhost:5000/review", {
+      fetch("https://assignment-11-server-rosy.vercel.app/review", {
         method: "POST",
         headers: {
           "content-type": "application/json",

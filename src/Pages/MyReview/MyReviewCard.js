@@ -12,13 +12,16 @@ const MyReviewCard = ({ review, handleDeleteReview, setDd }) => {
     console.log(updateReview);
 
     if (!edit) {
-      fetch(`http://localhost:5000/review/${review?._id}`, {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({ review: updateReview }),
-      })
+      fetch(
+        `https://assignment-11-server-rosy.vercel.app/review/${review?._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ review: updateReview }),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           setDd(!data);

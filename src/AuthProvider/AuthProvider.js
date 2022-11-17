@@ -24,7 +24,7 @@ const AuthProvider = ({ children }) => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://assignment-11-server-rosy.vercel.app/jwt", {
           method: "post",
           headers: {
             "content-type": "application/json",
@@ -54,7 +54,7 @@ const AuthProvider = ({ children }) => {
         }).then(() => {});
         console.log(user);
 
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://assignment-11-server-rosy.vercel.app/jwt", {
           method: "post",
           headers: {
             "content-type": "application/json",
@@ -76,7 +76,7 @@ const AuthProvider = ({ children }) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
         const user = result.user;
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://assignment-11-server-rosy.vercel.app/jwt", {
           method: "post",
           headers: {
             "content-type": "application/json",

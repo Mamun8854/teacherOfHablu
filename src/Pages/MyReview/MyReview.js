@@ -10,11 +10,14 @@ const MyReview = () => {
   const [dd, setDd] = useState();
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/review?email=${user?.email}`, {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
+      fetch(
+        `https://assignment-11-server-rosy.vercel.app/review?email=${user?.email}`,
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           setReviews(data);
@@ -25,7 +28,7 @@ const MyReview = () => {
   const handleDeleteReview = (id) => {
     const confirm = window.confirm("Are You Sure Delete this review?");
     if (confirm) {
-      fetch(`http://localhost:5000/review/${id}`, {
+      fetch(`https://assignment-11-server-rosy.vercel.app/review/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
