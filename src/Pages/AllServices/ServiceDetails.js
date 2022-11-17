@@ -26,7 +26,8 @@ const ServiceDetails = () => {
 
   const handleReview = (event) => {
     event.preventDefault();
-    const reviewValue = event.target.text.value;
+    const form = event.target;
+    const reviewValue = form.text.value;
     const data = {
       userName: displayName,
       userEmail: email,
@@ -47,10 +48,11 @@ const ServiceDetails = () => {
         .then((res) => res.json())
         .then((data) => {
           toast.success("Review added");
+          form.reset();
         })
         .catch((error) => console.error(error.message));
     } else {
-      toast.error("Please Login First, then add your review bokachoda");
+      toast.error("Please Login First, then add your review .");
     }
   };
 

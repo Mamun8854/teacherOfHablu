@@ -1,6 +1,6 @@
 import React from "react";
 
-const MyReviewCard = ({ review }) => {
+const MyReviewCard = ({ review, handleDeleteReview }) => {
   return (
     <div className="py-5">
       <div>
@@ -38,6 +38,7 @@ const MyReviewCard = ({ review }) => {
           </p> */}
                 <button className="btn btn-outline font-bold">Edit</button>
                 <button
+                  onClick={() => handleDeleteReview(review?._id)}
                   className="btn btn-outline font-extrabold ml-2 text-red-600 hover:text-red-600
           "
                 >
