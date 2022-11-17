@@ -3,7 +3,7 @@ import React from "react";
 const Review = ({ d }) => {
   return (
     <div>
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className=" bg-gray-100 flex items-center justify-center">
         <div className="px-10">
           <div className="bg-white max-w-xl rounded-2xl px-10 py-8 shadow-lg hover:shadow-2xl transition duration-500">
             <div className="mt-4">

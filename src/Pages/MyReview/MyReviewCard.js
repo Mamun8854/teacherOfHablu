@@ -1,58 +1,82 @@
-import React from "react";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
 
-const MyReviewCard = ({ review, handleDeleteReview }) => {
+const MyReviewCard = ({ review, handleDeleteReview, setDd }) => {
+  const [edit, setEdit] = useState(false);
+  //   const [updateReview, setUpdateReview] = useState();
+
+  const editReview = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const updateReview = form.review.value;
+    console.log(updateReview);
+
+    if (!edit) {
+      fetch(`http://localhost:5000/review/${review?._id}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ review: updateReview }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setDd(!data);
+          toast.success("Review Update successfully");
+        });
+    }
+  };
+  console.log(review);
+
   return (
-    <div className="py-5">
-      <div>
-        <div className="px-52">
-          <div className="w-full text-center border-2 border-b-4 border-gray-200 rounded-xl bg-gray-100">
-            <div className="grid grid-cols-6 p-5 gap-y-2">
-              <div className="flex items-center">
-                <img
-                  alt=""
-                  src={review?.userPhoto}
-                  className="max-w-16 max-h-16 rounded-full"
-                />
-              </div>
-
-              <div className="col-span-5 md:col-span-4 ml-4 lg:flex lg:items-center lg:flex-col">
-                <p className="text-gray-600 font-bold">{review?.userName} </p>
-
-                <p className="text-gray-400 ">
-                  {" "}
-                  Service Name :{" "}
-                  <span className="text-orange-600 font-bold">
-                    {review?.name}
-                  </span>
-                </p>
-
-                <p className="text-gray-400 bg-white p-10 my-2 w-3/4 rounded-lg">
-                  {" "}
-                  {review?.review}{" "}
-                </p>
-              </div>
-              <div className="flex col-start-2 ml-4 md:col-start-auto md:ml-0 md:justify-end items-center">
-                {/* <p className="rounded-lg text-sky-500 font-bold bg-sky-100  py-1 px-3 text-sm w-fit h-fit">
-            {" "}
-            FREE{" "}
-          </p> */}
-                <button className="btn btn-outline font-bold">Edit</button>
+    <div>
+      <div className="flex flex-col p-8 shadow-sm rounded-xl lg:p-12 dark:bg-gray-100 dark:text-gray-900">
+        <form onSubmit={editReview} className="flex flex-col items-center">
+          <h2 className="text-3xl font-semibold text-center">{review?.name}</h2>
+          <div className="flex flex-col items-center py-6 space-y-3">
+            <img
+              className="rounded-full h-16 w-16"
+              src={review?.userPhoto}
+              alt=""
+            />
+            <span className="text-center">{review?.userName}</span>
+          </div>
+          <div className="flex flex-col w-full">
+            <textarea
+              rows="3"
+              disabled={!edit}
+              name="review"
+              defaultValue={review?.review}
+              className="p-4 rounded-md resize-none dark:text-gray-900 dark:bg-white"
+            ></textarea>
+          </div>
+          <div className="flex items-center justify-center gap-10 py-5">
+            <div>
+              {edit ? (
                 <button
-                  onClick={() => handleDeleteReview(review?._id)}
-                  className="btn btn-outline font-extrabold ml-2 text-red-600 hover:text-red-600
-          "
+                  onClick={() => setEdit(false)}
+                  type="submit"
+                  className="btn btn-outline"
                 >
-                  X
+                  Update
                 </button>
-              </div>
+              ) : (
+                <button
+                  onClick={() => setEdit(true)}
+                  className="btn btn-outline"
+                >
+                  Edit
+                </button>
+              )}
             </div>
+            <button
+              onClick={() => handleDeleteReview(review?._id)}
+              className="btn btn-outline text-red-700 font-bold"
+            >
+              Delete
+            </button>
           </div>
-          <div>
-            {/* {reviews.map((r) => (
-        <MyReviewCard key={r._id} r={r}></MyReviewCard>
-      ))} */}
-          </div>
-        </div>
+        </form>
       </div>
     </div>
   );

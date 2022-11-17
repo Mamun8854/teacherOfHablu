@@ -57,7 +57,7 @@ const ServiceDetails = () => {
   };
 
   return (
-    <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 bg-gray-100">
+    <div className="px-4  py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 bg-gray-100">
       <section className="text-gray-600 body-font ">
         <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
           <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
@@ -90,6 +90,9 @@ const ServiceDetails = () => {
         </div>
       </section>
       <section>
+        <h2 className="font-extrabold text-center text-xl py-20">
+          Review for this service
+        </h2>
         <div className="grid grid-cols-3">
           {data?.map((d) => (
             <Review key={d._id} d={d}></Review>
@@ -113,9 +116,32 @@ const ServiceDetails = () => {
                 ></textarea>
               </label>
             </div>
-            <button type="submit" className="btn btn-outline my-4 font-bold">
-              Submit
-            </button>
+
+            {user ? (
+              <button type="submit" className="btn btn-outline my-4 font-bold">
+                Submit
+              </button>
+            ) : (
+              <a href="#my-modal-2" className="btn btn-outline font-bold my-4">
+                Submit
+              </a>
+            )}
+            <p></p>
+            <div className="modal" id="my-modal-2">
+              <div className="modal-box">
+                <h3 className="font-bold text-lg">
+                  You want to drop your own review??
+                </h3>
+                <p className="py-4">
+                  Please Login First and then drop your review.
+                </p>
+                <div className="modal-action">
+                  <Link to="/login" className="btn">
+                    Login
+                  </Link>
+                </div>
+              </div>
+            </div>
           </form>
         </div>
       </section>

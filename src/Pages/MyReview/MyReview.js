@@ -7,6 +7,7 @@ const MyReview = () => {
   const { user, loading, setLoading } = useContext(AuthContext);
   const [dlt, setDlt] = useState(true);
   const [reviews, setReviews] = useState();
+  const [dd, setDd] = useState();
   useEffect(() => {
     if (user?.email) {
       fetch(`http://localhost:5000/review?email=${user?.email}`)
@@ -15,7 +16,7 @@ const MyReview = () => {
           setReviews(data);
         });
     }
-  }, [user?.email, dlt]);
+  }, [user?.email, dlt, dd]);
 
   const handleDeleteReview = (id) => {
     const confirm = window.confirm("Are You Sure Delete this review?");
@@ -36,13 +37,14 @@ const MyReview = () => {
   };
 
   return (
-    <div>
+    <div className="grid  grid-cols-1 lg:grid-cols-2 gap-10">
       {reviews?.length > 0 ? (
         reviews?.map((review) => (
           <MyReviewCard
             key={review._id}
             review={review}
             handleDeleteReview={handleDeleteReview}
+            setDd={setDd}
           ></MyReviewCard>
         ))
       ) : (
