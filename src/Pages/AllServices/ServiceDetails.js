@@ -6,6 +6,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
 import Review from "./Review";
 import useTitle from "../../Hook/useTitle";
+import ScrollToTop from "react-scroll-to-top";
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
@@ -24,7 +25,7 @@ const ServiceDetails = () => {
       .then((data) => {
         setData(data);
       });
-  }, [data]);
+  }, [_id]);
 
   const handleReview = (event) => {
     event.preventDefault();
@@ -147,6 +148,7 @@ const ServiceDetails = () => {
           </form>
         </div>
       </section>
+      <ScrollToTop smooth />
     </div>
   );
 };

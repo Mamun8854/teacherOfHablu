@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Service from "./Service";
-
+import Loading from "../../Loading/Loading";
+import { useContext } from "react";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 const Section2 = () => {
   const [services, setServices] = useState([]);
+  const { loading } = useContext(AuthContext);
   useEffect(() => {
     fetch("https://assignment-11-server-rosy.vercel.app/services?size=3")
       .then((res) => res.json())
@@ -11,6 +14,10 @@ const Section2 = () => {
         setServices(data);
       });
   }, []);
+
+  if (loading) {
+    return <Loading></Loading>;
+  }
   return (
     <div>
       <h2 className="text-4xl font-bold text-center py-10 mb-10">
