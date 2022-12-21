@@ -20,8 +20,8 @@ const Section2 = () => {
   }
   return (
     <div>
-      <h2 className="text-4xl font-bold text-center py-10 mb-10">
-        here is some Course / Service of hablu's teacher{" "}
+      <h2 className="text-4xl font-bold text-teal-600 text-center py-10 mb-10">
+        Service of hablu's teacher
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => (
