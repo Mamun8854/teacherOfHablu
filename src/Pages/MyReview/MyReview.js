@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import useTitle from "../../Hook/useTitle";
+import Loading from "../Loading/Loading";
 import MyReviewCard from "./MyReviewCard";
 import NoReviewError from "./NoReviewError";
 const MyReview = () => {
@@ -42,6 +43,10 @@ const MyReview = () => {
         });
     }
   };
+
+  if (loading) {
+    return <Loading></Loading>;
+  }
 
   return (
     <div>
